@@ -28,6 +28,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Compute site configuration
         id: site
@@ -46,6 +48,8 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
