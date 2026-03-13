@@ -1,0 +1,33 @@
+---
+import PostCard from '../components/PostCard.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_TITLE } from '../consts';
+import { getPublishedPosts } from '../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<SiteLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+	<section class="section-block intro-block">
+		<p class="eyebrow">{SITE_TAGLINE}</p>
+		<h1>{SITE_TITLE}</h1>
+		<p class="intro-text">
+			我不觉得博客还足够有用。我真正想做的是脚手架外部化，只是还没完全想好，所以先用现在这种方式发布。
+		</p>
+	</section>
+
+	<section class="section-block">
+		<div class="section-heading">
+			<h2>最新博文</h2>
+		</div>
+		{posts.length > 0 ? (
+			<div class="post-list">
+				{posts.map((post) => <PostCard post={post} />)}
+			</div>
+		) : (
+			<div class="empty-state">
+				<h3>还没有可发布的博文</h3>
+			</div>
+		)}
+	</section>
+</SiteLayout>
