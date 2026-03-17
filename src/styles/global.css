@@ -130,6 +130,36 @@ header {
 	margin-bottom: 1rem;
 }
 
+.section-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.section-panel {
+	padding: 1.25rem 1.35rem;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 241, 235, 0.92));
+	border: 1px solid var(--line);
+	border-radius: 0.9rem;
+}
+
+.section-copy {
+	color: var(--muted);
+	max-width: 28rem;
+}
+
+.section-link {
+	display: inline-flex;
+	align-items: center;
+	font-family: var(--font-ui);
+	font-size: 0.94rem;
+	text-decoration: none;
+}
+
+.compact-list {
+	margin-top: 1rem;
+}
+
 .post-list {
 	display: grid;
 	gap: 1rem;
@@ -248,6 +278,10 @@ footer {
 	.page-shell {
 		width: min(100% - 1rem, 760px);
 		padding-top: 1.75rem;
+	}
+
+	.section-grid {
+		grid-template-columns: 1fr;
 	}
 
 	.post-card,

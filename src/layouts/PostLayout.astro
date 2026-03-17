@@ -1,16 +1,23 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import SiteLayout from './SiteLayout.astro';
 
-type Props = CollectionEntry<'posts'>['data'];
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	tags: string[];
+	sectionLabel?: string;
+}
 
-const { title, description, pubDate, updatedDate, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, sectionLabel } = Astro.props;
 ---
 
 <SiteLayout title={title} description={description}>
 	<article class="post-shell prose">
 		<header class="post-header">
+			{sectionLabel && <p class="eyebrow">{sectionLabel}</p>}
 			<h1>{title}</h1>
 			<p class="post-description">{description}</p>
 			<div class="post-meta">
